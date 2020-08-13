@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Table</title>
+</head>
+<body>
+	<style>
+		table, th, td{
+			border: 1px solid black;
+		}
+
+		th, td{
+			padding: 5px;
+			text-align: center;
+		}
+
+		tfoot{
+			font-weight: bold;
+		}
+	</style>
+
+	<table>
+		<thead>
+			<tr>
+				<th></th>					
+			
+				<th>2010</th>					
+			
+				<th>2012</th>					
+			
+				<th>2014</th>					
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr>
+				<td>Сапфиры</td>
+				<td rowspan="2">1483</td>					
+				<td>4532</td>					
+				<td>6743</td>					
+			</tr>
+
+			<tr>
+				<td>Рубины</td>	
+				<td>3835</td>					
+				<td>7482</td>					
+			</tr>
+
+			<tr>
+				<td>Алмазы</td>
+				<td>683</td>					
+				<td colspan="2">238</td>									
+			</tr>
+			
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>Сумма</td>
+				<td>2166</td>
+				<td>8605</td>
+				<td>14463</td>
+			</tr>
+		</tfoot>
+	</table>
+	
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Form</title>
+
+	<style>
+		@font-face{
+			font-family: 'Satisfy';
+			src: url("https://fonts.gstatic.com/s/satisfy/v10/rP2Hp2yn6lkG50LoCZOIHQ.woff2") format('woff2');
+			font-weight: 400;
+			font-style: normal;
+		}
+
+		h1, h4{
+			font-family: 'Satisfy', cursive;
+			text-transform: uppercase;
+			color: yellow;
+		}
+		
+		form input{
+		    padding: unset;
+		    height: 30px;
+		}
+
+		button{
+			padding: 0 30px;
+			cursor: pointer;
+		}
+
+		input[type=date]{
+			font-family: 'Satisfy', cursive;
+			font-weight: bold;
+		}
+
+		.breadcrumbs{
+			display: flex;
+			
+		}
+		.breadcrumbs__items{
+			display: flex;
+			list-style: none;
+		    margin: unset;
+		    padding: 4px;
+			background-color: #DDEAFC;
+		}
+		.breadcrumbs__item{
+			background-color: #01B6D8;
+			color: white;
+			border-radius: 5px;
+		}
+
+		.breadcrumbs__item:hover{
+			background-color: #00d7ff;
+		}
+
+
+		.breadcrumbs__link{
+			display: block;
+			background-color: inherit;
+			color: inherit;
+			text-decoration: none;
+			padding: 15px 40px;
+			position: relative;
+			border-radius: inherit;
+		}
+
+		.breadcrumbs__link:after{
+		    content: "";
+		    position: absolute;
+		    background-color: inherit;
+		    background-clip: content-box;
+		    right: 0;
+		    top: 50%;
+		    border-right: 4px solid #DDEAFC;
+		    border-bottom: 4px solid #DDEAFC;
+		    width: 35px;
+		    height: 35px;
+		    transform: translate(45%, -51%) rotate(-45deg);
+		    z-index: 1;
+		    border-radius: inherit;
+		}
+
+		.breadcrumbs__item_current{
+			background-color: #351A89;
+			border-top-left-radius: unset;
+		    border-bottom-left-radius: unset;
+			padding: 15px 40px;
+		}
+
+		.breadcrumbs__item_current:hover{
+			background-color: #3e00ff; 			
+		}
+
+
+		
+		
+		.form-radio-buttons{
+			display: flex;
+		}
+
+		.form-radio-button input{
+			display: none;
+		}
+
+		.form-radio-button label{
+			display: block;
+			position: relative;
+			padding: 0 25px;
+			cursor: pointer;
+		}
+
+		.form-radio-button label:before{
+		    content: "";
+		    position: absolute;
+		    left: 0;
+		    top: 50%;
+		    border-radius: 50%;
+		    border: 2px solid green;
+		    width: 12px;
+		    height: 12px;
+		    transform: translate(0px,-50%);
+		}
+
+		.form-radio-button label:after{
+		    content: "";
+		    position: absolute;
+		    left: 5px;
+		    top: 50%;
+		    border-radius: 50%;
+		    background-color: #D5D5DF;
+		    width: 6px;
+		    height: 6px;
+		    transform: translate(0px,-50%);
+		}
+
+		.form-radio-button input:checked + label:after{
+			background-color: green;
+		}
+
+
+		.form-radio-toggle{
+			display: flex;
+		}
+		
+		.form-radio-toggle input{
+			display: none;
+		}
+
+		.form-radio-toggle label{
+			display: block;
+		    position: relative;
+		    padding: 15px 30px;
+		    cursor: pointer;
+		    border-radius: 15px;
+		    border: 1px solid #D0D0CF;
+		}
+
+		.form-radio-toggle label:before{
+	        content: "";
+		    position: absolute;
+		    left: calc(0% - 1px);
+		    top: -1px;
+		    height: 100%;
+		    width: 50%;
+		    border: 1px solid #D0D0CF;
+		    border-radius: 15px;
+		    background-color: transparent;
+		    transition: all .4s ease;
+		}
+
+		.form-radio-toggle input:checked + label:before{
+			left: 50%;
+			background-color: green;
+		    transition: all .4s ease;
+		}
+
+	</style>
+
+</head>
+<body>
+	
+	<h1>Sign up for a massage right now and get a 30% discount</h1>
+	<form action="/" method="GET">
+		<input type="text" placeholder="Your first name">
+		<input type="text" placeholder="Your last name">
+		<input type="phone" placeholder="Your phone">
+		<input type="date">
+		<button type="submit">Send</button>
+		<button type="reset">Reset</button>
+	</form>
+	<h4> Be youtself and enjoy your life</h4>
+	<div class="breadcrumbs">
+		<ul class="breadcrumbs__items">
+			<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">One</a></li>
+			<li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Two</a></li>
+			<li class="breadcrumbs__item breadcrumbs__item_current">Three</li>
+		</ul>
+	</div>
+
+	<p>Pick one</p>
+	<div class="form-radio-buttons">
+		<div class="form-radio-button">
+			<input type="radio" id="item-1" name="pick-one">
+			<label for="item-1">Yes</label>
+		</div>
+		
+		<div class="form-radio-button">
+			<input type="radio" id="item-2" name="pick-one">
+			<label for="item-2">No</label>
+		</div>
+
+	</div>
+	
+	<div class="form-radio-toggle">
+		<input type="checkbox" id="item-3">
+		<label for="item-3"></label>
+	</div>
+
+</body>
+</html>
