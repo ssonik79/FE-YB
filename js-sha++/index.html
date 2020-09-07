@@ -139,33 +139,38 @@
             }
         }
 
-        // function tree() {
-        //     let num = parseInt(prompt('Введіть розмір ялинки'));
-        //     if (num % 2 == 0) {
-        //         let num = parseInt(prompt('Введіть розмір ялинки (непарне число)'));
-        //     };
+        function tree() {
+            let num = parseInt(prompt('Введіть розмір ялинки'));
+            if (num < 3) {
+                let num = parseInt(prompt('Введіть розмір ялинки (мінімальний розмір 3)'));
+            }
 
-        //     let middle = Math.ceil10(num / 2);
+            if (num % 2 == 0) {
+                let num = parseInt(prompt('Введіть розмір ялинки (непарне число)'));
+            };
 
-        //     console.log('middle ');
-        //     console.put(middle);
+            let middle = Math.ceil(num * 2 / 2);
 
+            let stars = 1;
+            for (let i = 0; i < num; i++) {
+                for (let j = num - i; j > 0; j--) {
+                    console.put(" ");
+                }
+                for (let k = stars; k > 0; k--) {
+                    console.put('*');
+                }
+                stars += 2;
+                console.log('');
+            }
 
-        //     for (let i = 1; i <= num; i++) {
-        //         for (let j = 1; j < num - 1 - i; j++) {
-        //             console.put(' ');
-        //         }
-        //         for (let k = i; k > 0; k--) {
-        //             console.log('*');
-        //         }
-        //     }
-        // }
+            for (let i = middle; i > 0; i--) {
+                console.put(" ");
+            }
+            console.put('*');
 
-        // 1 //    *
-        // 2 //   ***
-        // 3 //  *****
-        // 4 // *******
-        // l //    *
+        }
+
+        tree();
     </script>
 
 
