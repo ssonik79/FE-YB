@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+
+
+
+    <title>JS</title>
+</head>
+
+<body>
+
+    <script src="https://zero.p2p.shpp.me/console.js"></script>
+
+    <script>
+        function sum() {
+            let num = parseInt(prompt('Введите число 1'));
+            let num2 = parseInt(prompt('Введите число 2'));
+            console.log(num + num2);
+        }
+
+        function km_day() {
+            let km = parseInt(prompt('скільки КМ ви проходите в средньому пішки на день?'));
+
+            if (km <= 3) {
+                console.log('Мало');
+            } else if (km >= 20) {
+                console.log('марафонець!!');
+            } else {
+                console.log('Красавчик!');
+            }
+        }
+
+        function elevator() {
+            let num = parseInt(prompt('Введіть номер поверху'));
+            if (num < 1 || num > 9) {
+                console.log('Невірний поверх');
+            } else if (num <= 3 || num >= 7) {
+                console.log('Ok');
+            } else {
+                let pass = parseInt(prompt('Введіть пароль'));
+                if (pass === 1337) {
+                    console.log('Ok');
+                } else {
+                    console.log('невірний пароль');
+                }
+            }
+        }
+
+        function stars_n_while() {
+            let num = parseInt(prompt('Введіть кількість зірочок'));
+            while (num > 0) {
+                console.log('*');
+                num--;
+            };
+        }
+
+        function stars_n_for() {
+            for (let num = parseInt(prompt('Введіть кількість зірочок')); num > 0; num--) {
+                console.log('*');
+            }
+        }
+
+        function num_show() {
+            let num = parseInt(prompt('Введіть число для перерахунку'));
+            console.log('For');
+            for (let i = 1; i < num; i++) {
+                console.log(i + ',');
+            }
+
+            console.log('While');
+
+            let i = 1;
+            while (i < num) {
+                console.log(i + ',');
+                i++;
+            }
+
+        }
+
+        function num_show_reverse() {
+            let num = parseInt(prompt('Введіть число для відліку'));
+            console.log('For');
+            for (let i = num; i > 1; i--) {
+                console.log(i + ',');
+            }
+
+            console.log(1);
+
+
+            console.log('While');
+
+
+            while (num > 1) {
+                console.log(num + ',');
+                num--;
+            }
+
+            console.log(1);
+
+
+        }
+
+        function num_paired() {
+            let num = parseInt(prompt('Введіть число'));
+            console.log('For');
+            for (let i = 2; i <= num; i++) {
+                if (i % 2 == 0) {
+                    console.log(i);
+                }
+            }
+        }
+
+        function star_square() {
+            let num = parseInt(prompt('Введіть розмір квадрата'));
+            console.log('For');
+            for (let i = 0; i < num; i++) {
+                for (let j = 0; j < num - 1; j++) {
+                    console.put('*');
+                }
+                console.log('*');
+            }
+
+            console.log('While');
+            let i = 0;
+            let j = 0;
+            while (i < num) {
+                while (j < num - 1) {
+                    console.put('*');
+                    j++;
+                }
+
+                console.log('*');
+                i++;
+                j = 0;
+            }
+        }
+
+        // function tree() {
+        //     let num = parseInt(prompt('Введіть розмір ялинки'));
+        //     if (num % 2 == 0) {
+        //         let num = parseInt(prompt('Введіть розмір ялинки (непарне число)'));
+        //     };
+
+        //     let middle = Math.ceil10(num / 2);
+
+        //     console.log('middle ');
+        //     console.put(middle);
+
+
+        //     for (let i = 1; i <= num; i++) {
+        //         for (let j = 1; j < num - 1 - i; j++) {
+        //             console.put(' ');
+        //         }
+        //         for (let k = i; k > 0; k--) {
+        //             console.log('*');
+        //         }
+        //     }
+        // }
+
+        // 1 //    *
+        // 2 //   ***
+        // 3 //  *****
+        // 4 // *******
+        // l //    *
+    </script>
+
+
+</body>
+
+</html>
