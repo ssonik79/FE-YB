@@ -100,14 +100,14 @@
         }
 
         // document.addEventListener("load", stars());
-        // Нужно при клике пользователя отправлять ajax запрос для установки нового рейтинга 
+        // Нужно при клике пользователя отправлять ajax запрос для установки нового рейтинга
 
-        // Как считать рейтинг? не хранить же все оценки и потом считать среднее значение 
+        // Как считать рейтинг? не хранить же все оценки и потом считать среднее значение
         // ( сумма всех голосов + новое значение) / количество проголосовавших = среднее значение
-        // или M’ = (M*N + x) / (N + 1) 
-        // где М - среднее значение 
+        // или M’ = (M*N + x) / (N + 1)
+        // где М - среднее значение
         //     N - количество голосов
-        //     x - новый голос 
+        //     x - новый голос
 
         // Дальше нужно запомнить пользователя и запретить ему голосовать снова
     </script>
@@ -306,6 +306,57 @@
             }
             console.log("Сума послідовностей чисел від " + a + " до " + b + " = " + sum);
         }
+
+        function findCity() {
+
+            let userCities = [];
+
+            while (userCities.length !== 2) {
+                userCities.push(prompt("Введіть назву міста "));
+            }
+
+            let userCity = prompt('Введіть назву рідного міста');
+
+
+            let message = "я НЕ знаю твоє місто!";
+
+            for (let i = 0; i < userCities.length; i++) {
+                if (userCities[i].toLowerCase() == userCity.toLowerCase()) {
+                    message = 'я знаю твоє місто!';
+                }
+            }
+
+            console.log(message);
+
+        }
+
+        function ATM() {
+            let cards = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            let cardNum = parseInt(prompt("Введіть номер картки"));
+            while (cardNum < 0 || cardNum > cards.length) {
+                cardNum = parseInt(prompt("Введіть номер картки (Від 0 до)" + cards.length));
+            }
+
+            let sum = parseInt(prompt("Скільки плануєте покласти на рахунок?"));
+            while (sum < -1000 || sum > 1000) {
+                sum = parseInt(prompt(
+                    "Скільки плануєте покласти на рахунок? Сумма повинна складати не менше -1000 і не більше 1000"
+                ));
+            }
+
+            cards[cardNum] = sum;
+
+
+            let cardsSum = 0;
+            for (let i = 0; i < cards.length; i++) {
+                cardsSum += cards[i];
+            }
+
+            console.log(cards);
+            console.log("Сумма коштів на всіх рахунках = " + cardsSum);
+        }
+
+        ATM();
     </script>
 
 
