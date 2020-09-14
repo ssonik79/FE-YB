@@ -13,107 +13,6 @@
 
 <body>
 
-    <style>
-        /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
-        .rating-group {
-            display: inline-flex;
-        }
-
-        /* make hover effect work properly in IE */
-        .rating__icon {
-            pointer-events: none;
-        }
-
-
-
-        /* hide radio inputs */
-        .rating__input {
-            position: absolute !important;
-            left: -9999px !important;
-        }
-
-        /* hide 'none' input from screenreaders */
-        .rating__input--none {
-            display: none
-        }
-
-        /* set icon padding and size */
-        .rating__label {
-            cursor: pointer;
-            padding: 0 0.1em;
-            font-size: 2rem;
-        }
-
-        /* set default star color */
-        .rating__icon--star {
-            display: block;
-            background-color: orange;
-            height: 20px;
-            width: 20px;
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-        }
-
-        /* if any input is checked, make its following siblings grey */
-        .rating__input:checked~.rating__label .rating__icon--star {
-            background-color: #ddd;
-        }
-
-        /* make all stars orange on rating group hover */
-        .rating-group:hover .rating__label .rating__icon--star {
-            background-color: orange;
-        }
-
-        /* make hovered input's following siblings grey on hover */
-        .rating__input:hover~.rating__label .rating__icon--star {
-            background-color: #ddd;
-        }
-    </style>
-
-    <div id="full-stars-example-two">
-        <div class="rating-group">
-            <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0"
-                type="radio">
-            <label aria-label="1 star" class="rating__label" for="rating3-1"><i
-                    class="rating__icon rating__icon--star "></i></label>
-            <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-            <label aria-label="2 stars" class="rating__label" for="rating3-2"><i
-                    class="rating__icon rating__icon--star"></i></label>
-            <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-            <label aria-label="3 stars" class="rating__label" for="rating3-3"><i
-                    class="rating__icon rating__icon--star "></i></label>
-            <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-            <label aria-label="4 stars" class="rating__label" for="rating3-4"><i
-                    class="rating__icon rating__icon--star"></i></label>
-            <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-            <label aria-label="5 stars" class="rating__label" for="rating3-5"><i
-                    class="rating__icon rating__icon--star"></i></label>
-            <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-        </div>
-    </div>
-
-
-    <script>
-        function stars() {
-            let currentRating = Math.round(2.8);
-            let inputRating = document.getElementById('rating3-' + currentRating);
-            inputRating.setAttribute("checked", "true");
-        }
-
-        // document.addEventListener("load", stars());
-        // Нужно при клике пользователя отправлять ajax запрос для установки нового рейтинга
-
-        // Как считать рейтинг? не хранить же все оценки и потом считать среднее значение
-        // ( сумма всех голосов + новое значение) / количество проголосовавших = среднее значение
-        // или M’ = (M*N + x) / (N + 1)
-        // где М - среднее значение
-        //     N - количество голосов
-        //     x - новый голос
-
-        // Дальше нужно запомнить пользователя и запретить ему голосовать снова
-    </script>
-
-
-
 
 
     <script src="https://zero.p2p.shpp.me/console.js"></script>
@@ -332,31 +231,169 @@
 
         function ATM() {
             let cards = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            let cardNum = parseInt(prompt("Введіть номер картки"));
-            while (cardNum < 0 || cardNum > cards.length) {
-                cardNum = parseInt(prompt("Введіть номер картки (Від 0 до)" + cards.length));
+            let exit = true;
+            while (exit != false) {
+
+
+                let cardNum = parseInt(prompt("Введіть номер картки"));
+                while (cardNum < 0 || cardNum > cards.length) {
+                    cardNum = parseInt(prompt("Введіть номер картки (Від 0 до " + cards.length + " )"));
+                }
+
+                let sum = parseInt(prompt("Скільки плануєте покласти на рахунок?"));
+                while (sum < -1000 || sum > 1000) {
+                    sum = parseInt(prompt(
+                        "Скільки плануєте покласти на рахунок? Сумма повинна складати не менше -1000 і не більше 1000"
+                    ));
+                }
+
+                cards[cardNum - 1] = sum;
+
+
+                let cardsSum = 0;
+                for (let i = 0; i < cards.length; i++) {
+                    console.put(cards[i] + '  ');
+                    cardsSum += cards[i];
+                }
+                console.log();
+
+
+                console.log("Сумма коштів на всіх рахунках = " + cardsSum);
+                exit = confirm('Продовжити?');
             }
-
-            let sum = parseInt(prompt("Скільки плануєте покласти на рахунок?"));
-            while (sum < -1000 || sum > 1000) {
-                sum = parseInt(prompt(
-                    "Скільки плануєте покласти на рахунок? Сумма повинна складати не менше -1000 і не більше 1000"
-                ));
-            }
-
-            cards[cardNum] = sum;
-
-
-            let cardsSum = 0;
-            for (let i = 0; i < cards.length; i++) {
-                cardsSum += cards[i];
-            }
-
-            console.log(cards);
-            console.log("Сумма коштів на всіх рахунках = " + cardsSum);
         }
 
-        ATM();
+        function customTree() {
+            let treeSize = [];
+            let maxSize = 20;
+            let num = parseInt(prompt("Введіть число", 0));
+            while (num != 0 && treeSize.length < 20) {
+                if (num < 0) {
+                    num = parseInt(prompt("Введіть число більше за 0", 0));
+                } else {
+                    if (num % 2 == 0) {
+                        num = parseInt(prompt("Введіть число (непарне)", 0));
+                    } else {
+                        treeSize.push(num);
+                    }
+                }
+                num = parseInt(prompt("Введіть число (0 для виходу)", 0));
+            }
+
+            let max = 0;
+            for (let i = 0; i < treeSize.length; i++) {
+                console.log(treeSize[i]);
+                if (treeSize[i] > max) {
+                    max = treeSize[i];
+                }
+            }
+
+
+            let strSpace = 0;
+            for (let i = 0; i < treeSize.length; i++) {
+                strSpace = (max - treeSize[i]) / 2;
+                for (let j = 0; j < strSpace; j++) {
+                    console.put(" ");
+                }
+
+                for (let k = 0; k < treeSize[i]; k++) {
+                    console.put('*');
+                }
+                console.log("");
+            }
+
+
+        }
+
+        function coutWords() {
+            let str = prompt("Введіть рядок");
+            let strCount = 0;
+            let flag = false;
+            let letterCharCode = 0;
+
+            for (let i = 0; i < str.length; i++) {
+
+                letterCharCode = str[i].charCodeAt(0);
+                if (letterCharCode >= 65 && letterCharCode <= 122) {
+                    if (letterCharCode >= 91 && letterCharCode <= 96) {
+                        if (flag) {
+                            strCount++;
+                            flag = false;
+                        }
+
+                    } else {
+                        flag = true;
+                        if (str.length - 1 == i) {
+                            strCount++;
+                            flag = false;
+                        }
+                    }
+                } else {
+                    if (flag) {
+                        strCount++;
+                        flag = false;
+                    }
+                }
+
+                // console.log(letterCharCode + " = " + str[i]);
+                // console.log(flag);
+                // console.log(strCount);
+            }
+
+            console.log("Кількість слів у рядку = " + strCount);
+        }
+
+        function biggestWord() {
+            let str = prompt("Введіть рядок");
+            let biggestStr = "";
+            let flag = false;
+            let letterCharCode = 0;
+            let word = "";
+
+
+            for (let i = 0; i < str.length; i++) {
+
+                letterCharCode = str[i].charCodeAt(0);
+                if (letterCharCode >= 65 && letterCharCode <= 122) {
+                    if (letterCharCode >= 91 && letterCharCode <= 96) {
+                        if (flag) {
+                            flag = false;
+                            if (biggestStr.length < word.length) {
+                                biggestStr = word;
+                            }
+
+                            word = "";
+                        }
+
+                    } else {
+                        flag = true;
+                        word += str[i];
+
+                        if (str.length - 1 == i) {
+                            if (biggestStr.length < word.length) {
+                                biggestStr = word;
+                            }
+
+                            word = "";
+                        }
+                    }
+                } else {
+                    if (flag) {
+                        flag = false;
+                        if (biggestStr.length < word.length) {
+                            biggestStr = word;
+                        }
+
+                        word = "";
+                    }
+                }
+
+                // console.log(letterCharCode + " = " + str[i] + " - " + flag);
+                // console.log(word);
+            }
+
+            console.log("Найбільше слово у рядку - " + biggestStr + " - " + biggestStr.length);
+        }
     </script>
 
 
