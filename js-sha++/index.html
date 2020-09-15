@@ -394,6 +394,257 @@
 
             console.log("Найбільше слово у рядку - " + biggestStr + " - " + biggestStr.length);
         }
+
+        function max(a = 0, b = 0) {
+            if (a > b) {
+                return a;
+            } else {
+                return b;
+            }
+        }
+
+
+        function createArray(size = false) {
+            if (!size) {
+                size = parseInt(prompt("Введіть розмір масиву"));
+            }
+            let array = [];
+            for (let i = 0; i < size; i++) {
+                array.push(0);
+            }
+            return array;
+        }
+
+        function fillArray(array) {
+            for (let i = 0; i < array.length; i++) {
+                array[i] = parseInt(prompt("Введіть значення елемента " + i + " масиву"));
+            }
+            return array;
+        }
+
+        function printArray(array) {
+            for (let i = 0; i < array.length; i++) {
+                console.put(array[i] + " ");
+            }
+            console.log();
+        }
+
+        function reverseArray(array) {
+            let reversed = [];
+            for (let i = array.length - 1; i >= 0; i--) {
+                reversed.push(array[i]);
+            }
+            return reversed;
+        }
+
+        function main() {
+            let a = createArray();
+            a = fillArray(a);
+            printArray(a);
+            a = reverseArray(a);
+            console.log("Перевернутий масив");
+            printArray(a);
+
+        }
+
+
+        function stringToNumber(str) {
+            return parseFloat(str);
+        }
+
+        function NumberToString(number) {
+            return String(number);
+        }
+
+        function likes(names) {
+            let total = names.length;
+            let message = "";
+
+            switch (total) {
+                case 0:
+                    message = "no one likes this";
+                    break;
+
+                case 1:
+                    message = names[0] + " likes this";
+                    break;
+
+                case 2:
+                    message = names[0] + " and " + names[1] + " like this";
+                    break;
+
+                case 3:
+                    message = names[0] + ", " + names[1] + " and " + names[2] + " like this";
+                    break;
+
+                default:
+                    message = names[0] + ", " + names[1] + " and " + (total - 2) + " others like this";
+                    break;
+            }
+
+            return message;
+        }
+
+        function logicalCalc(array, op) {
+            let current = array.shift();
+
+            if (op == 'AND') {
+                for (let i = 0; i < array.length; i++) {
+                    if (array[i] && current) {
+                        current = true;
+                    } else {
+                        current = false;
+                    }
+                }
+            }
+
+            if (op == 'OR') {
+                for (let i = 0; i < array.length; i++) {
+                    if (array[i] || current) {
+                        current = true;
+                    } else {
+                        current = false;
+                    }
+                }
+            }
+
+
+            if (op == 'XOR') {
+                for (let i = 0; i < array.length; i++) {
+                    if (array[i] != current) {
+                        current = true;
+                    } else {
+                        current = false;
+                    }
+                }
+            }
+
+            return current;
+        }
+
+
+        function filter_list(l) {
+            // v1
+            let numList = [];
+            for (let i = 0; i < l.length; i++) {
+                if (Number.isInteger(l[i])) {
+                    numList.push(l[i]);
+                }
+            }
+
+            return numList;
+
+            // v2
+            return l.filter(function (num) {
+                return Number.isInteger(num);
+            });
+        }
+
+
+
+        function sumMix(x) {
+
+            // v1
+            let sum = 0;
+            for (let i = 0; i < x.length; i++) {
+                sum += parseInt(x[i]);
+            }
+
+            return sum;
+
+            //2 
+
+            return x.reduce(function (sum, current) {
+                return Number(sum) + Number(current);
+            });
+        }
+
+        function basicOp(operation, value1, value2) {
+            let result = 0;
+            switch (operation) {
+                case '+':
+                    result = value1 + value2;
+                    break;
+
+                case '-':
+                    result = value1 - value2;
+                    break;
+
+                case '*':
+                    result = value1 * value2;
+                    break;
+
+                case '/':
+                    result = value1 / value2;
+                    break;
+
+                default:
+                    result = value1 + value2;
+                    break;
+            }
+
+            return result;
+        }
+
+
+        function countSheeps(arrayOfSheep) {
+
+            // v1
+            let quantity = 0;
+
+            for (let i = 0; i < arrayOfSheep.length; i++) {
+                if (arrayOfSheep[i] == true) {
+                    quantity++;
+                }
+            }
+
+            return quantity;
+
+            //v2
+
+            return arrayOfSheep.reduce(function (quantity, item) {
+                if (item === true) {
+                    return quantity += 1;
+                } else {
+                    return quantity;
+                }
+            });
+
+
+            // v3
+
+            return arrayOfSheep.filter(function (item) {
+                if (item === true) {
+                    return item;
+                }
+            }).length;
+        }
+
+
+        function arrayPlusArray(arr1, arr2) {
+            // v1
+            let sumArray = 0;
+
+
+            for (let i = 0; i < arr1.length; i++) {
+                sumArray += arr1[i];
+            }
+
+            for (let i = 0; i < arr2.length; i++) {
+                sumArray += arr2[i];
+            }
+
+            return sumArray;
+
+            // v2
+
+            return arr1.reduce(function (sum, item) {
+                return sum += item;
+            }) + arr2.reduce(function (sum, item) {
+                return sum += item;
+            });
+
+        }
     </script>
 
 
